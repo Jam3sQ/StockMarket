@@ -2,9 +2,10 @@ var express = require('express');
 var app = express(); 
 var port = process.env.PORT || 80; 
 
-var Highscharts = require('highscharts');
+//Highstocks used to graph stock data 
+var Highscharts = require('highscharts/highstock');
 
-//Quandl 
+//Quandl API for grabbing stock data
 var Quandl = require('quandl'); 
 var quandl = new Quandl(); 
 var options = {
