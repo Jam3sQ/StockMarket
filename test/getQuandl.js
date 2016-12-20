@@ -6,7 +6,6 @@ var options = {
 quandl.configure(options)
 
 exports.getData = function(callback){
-	//Returns dataset 
 
 quandl.dataset({
   source: "WIKI",
@@ -19,9 +18,8 @@ quandl.dataset({
   end_date: "2016-01-29",
   column_index: 4
 }, function(err, response){
-    if(err)
-        throw err;
- 	callback(response); //Changes response string into a JSON object 
+    if(err)	throw err;
+ 	callback(response); 
 });
-// return object;
-}//end GetData
+
+}

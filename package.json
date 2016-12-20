@@ -9,8 +9,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "highcharts": "^5.0.6",
-    "quandl": "0.0.6"
+    "jquery": "^3.1.1",
+    "moment": "^2.17.1",
+    "quandl": "0.0.6",
+    "yfinance": "0.0.6"
   }
 }
