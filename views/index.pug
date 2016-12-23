@@ -1,8 +1,8 @@
 html
 	head
 		script(src="https://code.jquery.com/jquery-3.1.1.js"
-  		integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
- 	 	crossorigin="anonymous")
+		integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+		crossorigin="anonymous")
 		script(src="https://code.highcharts.com/stock/highstock.js")
 		script(src="https://code.highcharts.com/stock/modules/exporting.js")
 		script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js')
@@ -14,7 +14,19 @@ html
 				button(type='submit') See Stock
 			script.
 				$(function(){
-					$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function(data){
+					$.getJSON('https://www.quandl.com/api/v3/datasets/WIKI/YHOO/data.json', function(data){
+
+						var rawDataPoints = data.dataset_data.data; 
+					var dataPoints = rawDataPoints.map(function(value){
+							var date = moment(moment(value[0], "YYYY-MM-DD").unix()*1000);
+							return [date._i, value[4]]; 
+						})
+
+						dataPoints.sort(function(a,b){
+						return a[0] - b[0];
+						})
+
+
 						Highcharts.stockChart('container',{
 							rangeSelector: {
 								selected: 1
@@ -26,7 +38,7 @@ html
 
 							series: [{
 								name: 'AAPL', 
-								data: data, 
+								data: dataPoints, 
 								tooltip:{
 									valueDecimals: 2
 								}
