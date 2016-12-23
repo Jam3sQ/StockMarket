@@ -1,0 +1,45 @@
+html
+	head
+		script(src="https://code.jquery.com/jquery-3.1.1.js"
+  		integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+ 	 	crossorigin="anonymous")
+		script(src="https://code.highcharts.com/stock/highstock.js")
+		script(src="https://code.highcharts.com/stock/modules/exporting.js")
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js')
+
+	body
+		div(id="container",style={height: '400px', minwidth: '310px'}) 
+			form(method="post", action="/stock")
+				input(type='text', name='stock')
+				button(type='submit') See Stock
+			script.
+				$(function(){
+					$.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function(data){
+						Highcharts.stockChart('container',{
+							rangeSelector: {
+								selected: 1
+							}, 
+
+							title: {
+								text: 'Stock Price'
+							}, 
+
+							series: [{
+								name: 'AAPL', 
+								data: data, 
+								tooltip:{
+									valueDecimals: 2
+								}
+							}]
+						});
+
+					});
+
+				});
+				
+
+		
+
+
+
+				

@@ -1,7 +1,12 @@
 var moment = require('moment'); 
-
 var $ = require('jquery'); 
 var Highcharts = require('highcharts/highstock'); 
+// var stocks = require('./app.js'); 
+// var share = require('./app.js');
+
+// console.log(share.test());
+
+// console.log(share.test()); 
 
 $(function () {
 
@@ -18,12 +23,12 @@ $(function () {
         })
         // console.log(moment(moment(data.dataset_data.data[0][0], "YYYY-MM-DD").unix()*1000)._i);
         // console.table(dataPoints); 
-
+        console.log('Hi');
         // Create the chart
         Highcharts.stockChart('container', {
 
             title: {
-                text: 'Yahoo Stock Price'
+                text: 'Test Stock Price'
             },
 
             series: [{
