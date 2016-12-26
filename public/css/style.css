@@ -1,0 +1,25 @@
+body{
+	background-color: 	#FF0000;
+	margin: 0;
+}
+
+#container{
+	height: 400px; 
+	min-width: 310px; 
+}
+
+.highcharts-container{
+	height: 10vh;
+}
+
+.input-container{
+	height: 100px; 
+	width: 100vw;
+	margin: auto;
+	text-align: center;
+}
+
+form{
+	/*margin: auto;*/
+}
+

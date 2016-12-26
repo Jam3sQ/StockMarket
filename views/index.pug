@@ -1,5 +1,7 @@
 html
 	head
+		link(rel='stylesheet' href='css/style.css')
+		link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Unica+One')
 		script(src="https://code.jquery.com/jquery-3.1.1.js"
 		integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
 		crossorigin="anonymous")
@@ -8,13 +10,11 @@ html
 		script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js')
 
 	body
-		div(id="container",style={height: '600px', minwidth: '310px'}) 
-			form(method="post", action="/stock")
-				input(type='text', name='stock')
-				button(type='submit') See Stock
+		div(id="container") 
 			script.
+				stock = '#{stock}'; 
 				$(function(){
-					$.getJSON('https://www.quandl.com/api/v3/datasets/WIKI/YHOO/data.json', function(data){
+					$.getJSON('https://www.quandl.com/api/v3/datasets/WIKI/' + stock +'/data.json', function(data){
 
 						var rawDataPoints = data.dataset_data.data; 
 					var dataPoints = rawDataPoints.map(function(value){
@@ -33,21 +33,47 @@ html
 							}, 
 
 							title: {
-								text: 'Stock Price'
+								text:  stock + ' Stock Price'
 							}, 
 
 							series: [{
-								name: 'AAPL', 
+								name: stock, 
 								data: dataPoints, 
 								tooltip:{
 									valueDecimals: 2
 								}
-							}]
+							}], 
+
+							credits: {
+								position: {
+									align: 'left',
+									verticalAlign: 'bottom',
+									x: -300,
+									y: -10
+								}
+							},
+
+							chart: {
+
+								style: {
+									fontFamily: 'Unica One'
+								}
+							}
+
 						});
+
+					
+
 
 					});
 
 				});
+
+		div.input-container
+			form(method="post", action="/stock")
+				input(type='text', name='stock')
+				button(type='submit') Add
+
 				
 
 		
