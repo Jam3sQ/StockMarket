@@ -17,7 +17,7 @@ html
 					$.getJSON('https://www.quandl.com/api/v3/datasets/WIKI/' + stock +'/data.json', function(data){
 
 						var rawDataPoints = data.dataset_data.data; 
-					var dataPoints = rawDataPoints.map(function(value){
+						var dataPoints = rawDataPoints.map(function(value){
 							var date = moment(moment(value[0], "YYYY-MM-DD").unix()*1000);
 							return [date._i, value[4]]; 
 						})
