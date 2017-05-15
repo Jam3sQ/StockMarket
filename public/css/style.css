@@ -1,5 +1,5 @@
 body{
-	background-color: 	#FF0000;
+	background-color: 	#444444;
 	margin: 0;
 }
 
@@ -10,16 +10,21 @@ body{
 
 .highcharts-container{
 	height: 10vh;
+	width: 90vw;
 }
 
 .input-container{
 	height: 100px; 
-	width: 100vw;
+	width: 80vw;
 	margin: auto;
 	text-align: center;
+	background-color: grey;
 }
 
 form{
 	/*margin: auto;*/
+	position: relative;
+	top: 50%; 
+	transform: translateY(-50%);
 }
 

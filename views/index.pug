@@ -28,12 +28,16 @@ html
 
 
 						Highcharts.stockChart('container',{
+
 							rangeSelector: {
 								selected: 1
 							}, 
 
 							title: {
-								text:  stock + ' Stock Price'
+								text:  stock + ' Stock Price', 
+								style: {
+									'color': '#D6D6D9'
+								}
 							}, 
 
 							series: [{
@@ -57,7 +61,10 @@ html
 
 								style: {
 									fontFamily: 'Unica One'
-								}
+								},
+
+								backgroundColor: '#2A2A2B',
+
 							}
 
 						});
@@ -72,7 +79,17 @@ html
 		div.input-container
 			form(method="post", action="/stock")
 				input(type='text', name='stock')
-				button(type='submit') Add
+				button(type='submit') Go
+			script. 
+				$(function(){
+					$.getJSON('https://www.quandl.com/api/v3/datasets/WIKI/FB/metadata.json', function(metaData){
+						console.log(metaData);
+					p
+						= 'this code is <escaped>!'	
+
+					});
+
+				});
 
 				
 
