@@ -13,9 +13,12 @@ html
 		div(id="container") 
 			script.
 				stock = '#{stock}'; 
+
+				// Fetch data from Quandl API
 				$(function(){
 					$.getJSON('https://www.quandl.com/api/v3/datasets/WIKI/' + stock +'/data.json', function(data){
 
+						// Find the Stock information 
 						var rawDataPoints = data.dataset_data.data; 
 						var dataPoints = rawDataPoints.map(function(value){
 							var date = moment(moment(value[0], "YYYY-MM-DD").unix()*1000);
@@ -26,7 +29,7 @@ html
 						return a[0] - b[0];
 						})
 
-
+						// Format high charts 
 						Highcharts.stockChart('container',{
 
 							rangeSelector: {
@@ -36,7 +39,7 @@ html
 							title: {
 								text:  stock + ' Stock Price', 
 								style: {
-									'color': '#D6D6D9'
+									'color': 'black'
 								}
 							}, 
 
@@ -63,7 +66,7 @@ html
 									fontFamily: 'Unica One'
 								},
 
-								backgroundColor: '#2A2A2B',
+								backgroundColor: 'white',
 
 							}
 
@@ -76,6 +79,7 @@ html
 
 				});
 
+		// Input container 
 		div.input-container
 			form(method="post", action="/stock")
 				input(type='text', name='stock')
