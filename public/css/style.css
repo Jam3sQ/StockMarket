@@ -23,10 +23,34 @@ body{
 	background-color: #d6d6db;
 }
 
+.form-container{
+	width: 40vw;
+	height: 100px; 
+	float: right;
+}
+
 form{
 	/*margin: auto;*/
+	float: center;
 	position: relative;
 	top: 50%; 
 	transform: translateY(-50%);
+}
+
+.stock-info{
+	width: 40vw;
+	height: 100px; 
+	float: left;
+	/*border-style: solid; */
+	background-color: #bab6b6;
+}
+
+#stockName{
+	margin: 0px;
+	margin-left: 10px;
+	float: left;
+	font-size: 2em;
+	font-family: 'Lucida Sans Unicode';
+
 }
 

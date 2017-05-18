@@ -16,6 +16,7 @@
     "moment": "^2.17.1",
     "pug": "^2.0.0-beta6",
     "quandl": "0.0.6",
+    "tickersymbol": "^1.0.1",
     "yfinance": "0.0.6"
   }
 }
