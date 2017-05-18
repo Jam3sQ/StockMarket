@@ -13,8 +13,8 @@ html
 
 		div(id="container") 
 			script.
-
 				stock = '#{stock}'; 
+
 				// Fetch data from Quandl API
 				$(function createChart(){
 					$.getJSON('https://www.quandl.com/api/v3/datasets/WIKI/' + stock +'/data.json?api_key=6Wkrs1ujpP3GXWTVrSEk', function(data){
@@ -69,6 +69,8 @@ html
 					});
 				});
 
+				
+				
 
 		// Input container 
 		div.input-container
@@ -79,6 +81,15 @@ html
 			div.stock-info
 				div.stock-name 
 					h1#stockName #{stock}
+				div.stock-meta
+					p#stockMeta
+						script. 
+							$.getJSON(`https://www.quandl.com/api/v3/datasets/WIKI/${stock}/metadata.json?api_key=6Wkrs1ujpP3GXWTVrSEk`, data => {
+								var metaData; 
+								metaData = data.dataset.name; 
+								var info = document.getElementById('stockMeta'); 
+								info.innerHTML = metaData;
+							}); 
 
 	
 				
