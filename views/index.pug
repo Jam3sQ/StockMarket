@@ -8,27 +8,26 @@ html
 		script(src="https://code.highcharts.com/stock/highstock.js")
 		script(src="https://code.highcharts.com/stock/modules/exporting.js")
 		script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js')
+		title Loo StockXchange
 
 	body
 
 		div(id="container") 
 			script.
-				let stock = '#{stock}'; 
+				const stock = '#{stock}'; 
 
 				// Fetch data from Quandl API
 				$(function createChart(){
-					$.getJSON('https://www.quandl.com/api/v3/datasets/WIKI/' + stock +'/data.json?api_key=6Wkrs1ujpP3GXWTVrSEk', function(data){
+					$.getJSON('https://www.quandl.com/api/v3/datasets/WIKI/' + stock +'/data.json?api_key=6Wkrs1ujpP3GXWTVrSEk', (data) => {
 						
 						// Find the Stock information 
-						var rawDataPoints = data.dataset_data.data; 
-						var dataPoints = rawDataPoints.map((value) => {
-							var date = moment(moment(value[0], "YYYY-MM-DD").unix()*1000);
+						const rawDataPoints = data.dataset_data.data; 
+						const dataPoints = rawDataPoints.map(value => {
+							const date = moment(moment(value[0], "YYYY-MM-DD").unix()*1000);
 							return [date._i, value[4]]; 
 						}); 
 
-						dataPoints.sort(function(a,b){
-						return a[0] - b[0];
-						});
+						dataPoints.sort((a,b) => a[0] - b[0]);
 
 						Highcharts.stockChart('container', {
 
@@ -85,9 +84,9 @@ html
 					p#stockMeta
 						script. 
 							$.getJSON(`https://www.quandl.com/api/v3/datasets/WIKI/${stock}/metadata.json?api_key=6Wkrs1ujpP3GXWTVrSEk`, data => {
-								var metaData; 
+								let metaData; 
 								metaData = data.dataset.name; 
-								var info = document.getElementById('stockMeta'); 
+								const info = document.getElementById('stockMeta'); 
 								info.innerHTML = metaData;
 							}); 
 
